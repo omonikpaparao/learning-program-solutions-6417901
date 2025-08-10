@@ -1,0 +1,193 @@
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~
+$ git config --global merge.tool p4merge
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~
+$ git config --global mergetool.p4merge.path "C:/Program Files/Perforce/p4merge.exe"
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~
+$ git config --global diff.tool p4merge
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~
+$ git config --global difftool.p4merge.path "C:/Program Files/Perforce/p4merge.exe"
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~
+$ git clone https://github.com/omonikpaparao/GitDemo.git
+fatal: destination path 'GitDemo' already exists and is not an empty directory.
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~
+$ git clone https://github.com/omonikpaparao/PracticeRepo.git
+Cloning into 'PracticeRepo'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (3/3), done.
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~
+$ cd PracticeRepo
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git branch GitNewBranch
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git branch -a
+  GitNewBranch
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git checkout GitNewBranch
+Switched to branch 'GitNewBranch'
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$ echo "This is a test file in GitNewBranch" > testfile.txt
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$ git add testfile.txt
+warning: in the working copy of 'testfile.txt', LF will be replaced by CRLF the next time Git touches it
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$ git commit -m "Added testfile.txt in GitNewBranch"
+[GitNewBranch 7078c59] Added testfile.txt in GitNewBranch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 testfile.txt
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$ git status
+On branch GitNewBranch
+nothing to commit, working tree clean
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git diff main GitNewBranch
+diff --git a/testfile.txt b/testfile.txt
+new file mode 100644
+index 0000000..2ed0be4
+--- /dev/null
++++ b/testfile.txt
+@@ -0,0 +1 @@
++This is a test file in GitNewBranch
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git difftool main GitNewBranch
+
+Viewing (1/1): 'testfile.txt'
+Launch 'p4merge' [Y/n]? y
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git merge GitNewBranch
+Updating 62342eb..7078c59
+Fast-forward
+ testfile.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 testfile.txt
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git mergetool
+No files need merging
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git log --oneline --graph --decorate
+* 7078c59 (HEAD -> main, GitNewBranch) Added testfile.txt in GitNewBranch
+* 62342eb (origin/main, origin/HEAD) Initial commit
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git branch -d GitNewBranch
+Deleted branch GitNewBranch (was 7078c59).
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git push origin --delete GitNewBranch
+info: please complete authentication in your browser...
+error: unable to delete 'GitNewBranch': remote ref does not exist
+error: failed to push some refs to 'https://github.com/omonikpaparao/PracticeRepo.git'
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git checkout GitNewBranch
+error: pathspec 'GitNewBranch' did not match any file(s) known to git
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git branch GitNewBranch
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git branch -a
+  GitNewBranch
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git checkout GitNewBranch
+Switched to branch 'GitNewBranch'
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$ git add testfile.txt
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$ git commit -m "Added testfile.txt in GitNewBranch"
+On branch GitNewBranch
+nothing to commit, working tree clean
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$ ls -a
+./  ../  .git/  README.md  testfile.txt
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$ git status
+On branch GitNewBranch
+nothing to commit, working tree clean
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git diff main GitNewBranch
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git difftool main GitNewBranch
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git merge GitNewBranch
+Already up to date.
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git log --oneline --graph --decorate
+* 7078c59 (HEAD -> main, GitNewBranch) Added testfile.txt in GitNewBranch
+* 62342eb (origin/main, origin/HEAD) Initial commit
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git checkout GitNewBranch
+Switched to branch 'GitNewBranch'
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$ git push origin GitNewBranch
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 341 bytes | 341.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'GitNewBranch' on GitHub by visiting:
+remote:      https://github.com/omonikpaparao/PracticeRepo/pull/new/GitNewBranch
+remote:
+To https://github.com/omonikpaparao/PracticeRepo.git
+ * [new branch]      GitNewBranch -> GitNewBranch
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (GitNewBranch)
+$

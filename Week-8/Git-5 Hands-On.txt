@@ -1,0 +1,49 @@
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git add .
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git commit -m "Saving pending work before push"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git branch -a
+  GitNewBranch
+  GitWork
+* main
+  remotes/origin/GitNewBranch
+  remotes/origin/GitWork
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git checkout main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git pull origin main
+From https://github.com/omonikpaparao/PracticeRepo
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git push origin main
+Everything up-to-date
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$ git push origin GitWork
+Everything up-to-date
+
+ORUGANTI@LAPTOP-9UIS8SGM MINGW64 ~/PracticeRepo (main)
+$
